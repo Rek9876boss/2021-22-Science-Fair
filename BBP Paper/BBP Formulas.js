@@ -5,3 +5,10 @@ function firstForm(n){
   }
   return temp;
 }
+function secondForm(n){
+  var temp = 0;
+  for(let i = 0; i < n; i++){
+    temp = temp + ()
+  }
+  return temp;
+}
