@@ -37,3 +37,6 @@ class Chu{
         return 4/temp;
     }
 }
+module.exports = {
+    Chu:Chu
+}
