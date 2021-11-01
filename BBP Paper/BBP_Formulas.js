@@ -60,6 +60,20 @@ class BBP{
     temp = temp * 9/8;
     return Math.sqrt(temp);
   }
+  /**
+   * Listed as function (2.13)
+   * @param {Number} n Number of iterations
+   * @returns {Number}
+   */
+  f2_13(n){
+    function f(x){
+      var temp = 0;
+      for(let i=1;i<n;i++){
+        temp = temp + ((((-1)^i)*(x^i))/(2*i+1));
+      }
+    }
+    return (Math.sqrt(2) * (4 * f(0.5) + f(0.125)));
+  }
 }
 module.exports = {
   BBP: BBP
