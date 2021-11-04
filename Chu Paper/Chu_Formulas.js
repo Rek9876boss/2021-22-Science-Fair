@@ -1,4 +1,5 @@
 const mathjs = require("mathjs");
+const Decimal = require("decimal.js").Decimal;
 class Chu{
     /**
      * 
@@ -30,7 +31,7 @@ class Chu{
      * @returns {Number}
      */
     fA1(n){
-        var temp = 0;
+        var temp = new Decimal('0');
         for(let i=0;i<n;i++){
             temp = temp + (hgeo([0.5,0.5,0.5],[1,1,1],i)*((1+6*i)/(4^i)));
         }

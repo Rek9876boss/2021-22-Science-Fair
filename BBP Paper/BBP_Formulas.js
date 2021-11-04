@@ -1,3 +1,5 @@
+const mathjs = require("mathjs");
+const Decimal = require("decimal.js").Decimal;
 /**
  * This class contains all the Bailey-Borwein-Plouffe formulas that I will be using.
  */
@@ -9,7 +11,7 @@ class BBP{
    * @param {Number} a Is the accuracy of the function (number of iterations)
    */
   static polyLogarithm(m,z,a){
-    var temp = 0;
+    var temp = new Decimal('0');
     for(let i = 0; i < a; i++){
       temp = temp + ((z^i)/(i^m));
     }
@@ -21,7 +23,7 @@ class BBP{
    * @returns {Number}
    */
   f1_2(n){
-    var temp = 0;
+    var temp = new Decimal('0');
     for(let i = 0; i < n; i++){
      temp = temp + ((1/(16^i))*((4/(8*i + 1))-(2/(8*i+4))-(1/(8*i+5))-(1/(8*i+6))));
     }
@@ -33,7 +35,7 @@ class BBP{
    * @returns {Number}
    */
   fupg905_4(n){
-    var temp = 0;
+    var temp = new Decimal('0');
     for(let i = 0; i < n; i++){
       temp = temp + (((-1)^i)/(4^i))*((2/(4*i+1))+(2/(4*i+2))+(1/(4*i+3)));
     }
@@ -53,7 +55,7 @@ class BBP{
    * @returns {Number}
    */
   fupg906_1(n){
-    var temp = 0;
+    var temp = new Decimal('0');
     for(let i = 0; i < n; i++){
       temp = temp + ((1/(64^i))*((16/((6*i+1)^2))-(24/((6*i+2)^2))-(8/((6*i+3)^3))-(6/((6*i+4)^2))+(1/((6*i+5)^2))));
     }
@@ -67,10 +69,11 @@ class BBP{
    */
   f2_13(n){
     function f(x){
-      var temp = 0;
+      var temp = new Decimal('0');
       for(let i=1;i<n;i++){
         temp = temp + ((((-1)^i)*(x^i))/(2*i+1));
       }
+      return temp;
     }
     return (Math.sqrt(2) * (4 * f(0.5) + f(0.125)));
   }
