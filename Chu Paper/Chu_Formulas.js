@@ -17,8 +17,8 @@ class Chu{
     }
     /**
      * 
-     * @param {Array} a The list of values on top
-     * @param {Array} A The list of values on bottom
+     * @param {Array<number>} a The list of values on top
+     * @param {Array<number>} A The list of values on bottom
      * @param {Number} n The base of the shifted factorial
      */
     static hgeo(a,A,n){
@@ -29,14 +29,14 @@ class Chu{
     /**
      * Listed in paper as function A1
      * @param {Number} n Number of iterations
-     * @returns {Number}
+     * @returns {Decimal}
      */
     static fA1(n){
         var temp = new Decimal('0');
         for(let i=0;i<n;i++){
-            temp = temp + (hgeo([0.5,0.5,0.5],[1,1,1],i)*((1+6*i)/(4^i)));
+            temp = temp.plus(hgeo([0.5,0.5,0.5],[1,1,1],i)*((1+6*i)/(4^i)));
         }
-        return 4/temp;
+        return temp.toPower(-1).times(4);
     }
 }
 module.exports = {
