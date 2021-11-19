@@ -30,7 +30,7 @@ class Chu{
      * @param {Number} n Number of iterations
      * @returns {Number}
      */
-    fA1(n){
+    static fA1(n){
         var temp = new Decimal('0');
         for(let i=0;i<n;i++){
             temp = temp + (hgeo([0.5,0.5,0.5],[1,1,1],i)*((1+6*i)/(4^i)));
