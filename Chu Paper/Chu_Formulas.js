@@ -1,6 +1,6 @@
 const mathjs = require("mathjs");
 const Decimal = require("decimal.js").Decimal;
-Decimal.precision = MAX_DIGITS;
+Decimal.set({precision: MAX_DIGITS, rounding: 1});
 class Chu{
     /**
      * 
