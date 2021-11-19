@@ -1,5 +1,6 @@
 const mathjs = require("mathjs");
 const Decimal = require("decimal.js").Decimal;
+Decimal.precision = MAX_DIGITS;
 /**
  * This class contains all the Bailey-Borwein-Plouffe formulas that I will be using.
  */
