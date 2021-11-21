@@ -79,6 +79,13 @@ class BBP{
     }
     return (Decimal.sqrt(2).times((f(0.5).times(4).plus(f(0.125)))));
   }
+  functionList = {
+    f1_2: BBP.f1_2,
+    f2_13: BBP.f2_13,
+    f2_3: BBP.f2_3,
+    fupg905_4: BBP.fupg905_4,
+    fupg906_1: BBP.fupg906_1
+  }
 }
 module.exports = {
   BBP: BBP

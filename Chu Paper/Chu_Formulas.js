@@ -38,6 +38,9 @@ class Chu{
         }
         return temp.toPower(-1).times(4);
     }
+    functionList = {
+        fA1: Chu.fA1
+    }
 }
 module.exports = {
     Chu:Chu
