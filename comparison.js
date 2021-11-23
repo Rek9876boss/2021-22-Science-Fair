@@ -1,7 +1,7 @@
 const mathjs = require("mathjs");
 const Decimal = require("decimal.js").Decimal;
 const Pi = require("decimal.js").PI;
-Decimal.set({precision:MAX_DIGITS, rounding: 1});
+Decimal.set({precision: MAX_DIGITS, rounding: 1});
 /**
  * Compares different formulas
  * @class
