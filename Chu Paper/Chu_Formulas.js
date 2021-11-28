@@ -1,13 +1,10 @@
 const mathjs = require("mathjs");
 const Decimal = require("decimal.js").Decimal;
 Decimal.set({precision: MAX_DIGITS, rounding: 1});
+/**
+ * This class contains all the Chu formulas that I will be using.
+ */
 class Chu{
-    /**
-     * 
-     * @param {Number} x 
-     * @param {Number} n 
-     * @returns {Number}
-     */
     static sFactiorial(x,n){
         if(n === 0){
             return 1;
@@ -19,7 +16,7 @@ class Chu{
      * 
      * @param {Array<number>} a The list of values on top
      * @param {Array<number>} A The list of values on bottom
-     * @param {Number} n The base of the shifted factorial
+     * @param {number} n The base of the shifted factorial
      */
     static hgeo(a,A,n){
         a.forEach(x => Chu.sFactiorial(x,n));
