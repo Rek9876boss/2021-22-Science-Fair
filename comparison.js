@@ -5,7 +5,6 @@ Decimal.set({precision: MAX_DIGITS, rounding: 1});
 /**
  * Compares different formulas
  * @class
- * @static
  */
 class Comparator{
   /**
