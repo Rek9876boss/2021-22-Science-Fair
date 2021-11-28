@@ -3,6 +3,8 @@ const Decimal = require("decimal.js").Decimal;
 Decimal.set({precision: MAX_DIGITS, rounding: 1});
 /**
  * This class contains all the Bailey-Borwein-Plouffe formulas that I will be using.
+ * @fXY {x: Letter} {y: number} is a listed function.
+ * @fuY {y: any} is unlisted. see description for more information.
  */
 class BBP{
   /**
