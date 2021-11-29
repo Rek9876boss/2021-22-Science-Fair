@@ -38,6 +38,7 @@ class Comparator{
   static makeList(c1,c2,n){
     var c1List = {};
     var c2List = {};
+    // puts all the functions in the list, adds their values
     for(const fn in c1.functionList){
       Object.defineProperty(c1List,fn,(function(){
         var output = [];
@@ -56,6 +57,7 @@ class Comparator{
         return output;
       }));
     }
+    // return values
     var final = {};
     Object.defineProperty(final,c1.name,c1List);
     Object.defineProperty(final,c2.name,c2List);
