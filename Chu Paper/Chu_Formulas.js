@@ -1,6 +1,6 @@
 const mathjs = require("mathjs");
 const Decimal = require("decimal.js").Decimal;
-Decimal.set({ precision: 1e9, rounding: 1 });
+Decimal.set({ precision: 1025, rounding: 1 });
 /**
  * This class contains all the Chu formulas that I will be using.
  * @fXY {x: Letter} {y: number} is a listed function.
@@ -22,13 +22,13 @@ class Chu {
      */
     static hgeo(a, A, n) {
         a.forEach((x, i) => { a[i] = Chu.sFactiorial(x, n) });
-        A.forEach((x, i) => { a[i] = Chu.sFactiorial(x, n) });
+        A.forEach((x, i) => { A[i] = Chu.sFactiorial(x, n) });
         return mathjs.prod(a) / mathjs.prod(A);
     }
     static fA1(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
-            temp = temp.add(Chu.hgeo([0.5, 0.5, 0.5], [1, 1, 1], k) * ((1 + 6 * k) / (4 ** k)));
+            temp = temp.add(Chu.hgeo([0.5, 0.5, 0.5], [1, 1, 1], k) * ((6 * k + 1) / (4 ** k)));
         }
         return Decimal.div(4, temp);
     }
@@ -58,14 +58,14 @@ class Chu {
         for (let k = 0; k < n; k++) {
             temp = temp.add(Chu.hgeo([1 / 5, 1 / 5, 4 / 5, 4 / 5], [1, 1, 1, 3 / 2], k) * ((4 + 50 * k + 75 * k ** 2) / (4 ** k)));
         }
-        return Decimal.div(Decimal.mul(25, Decimal.sqrt(Decimal.sub(5, Decimal.sqrt(5)))), Decimal.sqrt(2).mul(2).mul(temp));
+        return Decimal.div(Decimal.mul(Decimal.sqrt(Decimal.sub(5, Decimal.sqrt(5))), 25), Decimal.mul(Decimal.mul(Decimal.sqrt(2), 2), temp));
     }
     static fA6(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
             temp = temp.add(Chu.hgeo([2 / 5, 2 / 5, 3 / 5, 3 / 5], [1, 1, 1, 3 / 2], k) * ((6 + 50 * k + 75 * k ** 2) / (4 ** k)));
         }
-        return Decimal.div(Decimal.mul(25, Decimal.sqrt(Decimal.add(5, Decimal.sqrt(5)))));
+        return Decimal.div(Decimal.mul(Decimal.sqrt(Decimal.add(Decimal.sqrt(5), 5)), 25), Decimal.mul(Decimal.mul(Decimal.sqrt(2), 2), temp));
     }
     static fA7(n) {
         var temp = new Decimal(0);
