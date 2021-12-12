@@ -1,23 +1,22 @@
-const Decimaljs = require("Decimaljs");
+const mathjs = require("mathjs");
 const Decimal = require("decimal.js").Decimal;
-Decimal.set({precision: MAX_DIGITS, rounding: 1});
+Decimal.set({ precision: 1e9, rounding: 1 });
 /**
  * This class contains all the Bailey-Borwein-Plouffe formulas that I will be using.
  * @fXY {x: Letter} {y: number} is a listed function.
  * @fuY {y: any} is unlisted. see description for more information.
  */
-class BBP{
+class BBP {
   /**
-   * 
    * @param {Number} m Is the m-th polylogarithm
    * @param {Number} z The value that you are taking the polylogarithm of
    * @param {Number} a Is the accuracy of the function (number of iterations)
    * @returns {Decimal}
    */
-  static polyLogarithm(m,z,a){
+  static polyLogarithm(m, z, a) {
     var temp = new Decimal(0);
-    for(let i = 0; i < a; i++){
-      temp = temp.add(((z^i)/(i^m)));
+    for (let i = 0; i < a; i++) {
+      temp = temp.add(((z ** i) / (i ** m)));
     }
     return temp;
   }
@@ -26,10 +25,10 @@ class BBP{
    * @param {Number} n Number of iterations
    * @returns {Decimal}
    */
-  static f1_2(n){
+  static f1_2(n) {
     var temp = new Decimal(0);
-    for(let i = 0; i < n; i++){
-     temp = temp.add(((1/(16^i))*((4/(8*i + 1))-(2/(8*i+4))-(1/(8*i+5))-(1/(8*i+6)))));
+    for (let i = 0; i < n; i++) {
+      temp = temp.add((1 / (16 ** i)) * ((4 / ((8 * i) + 1)) - (2 / ((8 * i) + 4)) - (1 / ((8 * i) + 5)) - (1 / ((8 * i) + 6))));
     }
     return temp;
   }
@@ -38,10 +37,10 @@ class BBP{
    * @param {Number} n Number of iterations
    * @returns {Decimal}
    */
-  static fupg905_4(n){
+  static fupg905_4(n) {
     var temp = new Decimal(0);
-    for(let i = 0; i < n; i++){
-      temp = temp.add(((((-1)^i)/(4^i))*((2/(4*i+1))+(2/(4*i+2))+(1/(4*i+3)))));
+    for (let i = 0; i < n; i++) {
+      temp = temp.add(((((-1) ** i) / (4 ** i)) * ((2 / (4 * i + 1)) + (2 / (4 * i + 2)) + (1 / (4 * i + 3)))));
     }
     return temp;
   }
@@ -50,44 +49,30 @@ class BBP{
    * @param {Number} n Number of iterations
    * @returns {Decimal}
    */
-  static f2_3(n){
-    return Decimal.sqrt(36*BBP.polyLogarithm(2,0.5,n) - 36*BBP.polyLogarithm(2,0.25,n) - 12*BBP.polyLogarithm(2,0.125,n) + 6*BBP.polyLogarithm(2,0.015625,n));
-  }
-  /**
-   * Unlisted, first unlisted function from top on page 906
-   * @param {Number} n Number of iterations
-   * @returns {Decimal}
-   */
-  static fupg906_1(n){
-    var temp = new Decimal(0);
-    for(let i = 0; i < n; i++){
-      temp = temp.add(((1/(64^i))*((16/((6*i+1)^2))-(24/((6*i+2)^2))-(8/((6*i+3)^3))-(6/((6*i+4)^2))+(1/((6*i+5)^2)))));
-    }
-    temp = temp.mul(9/8);
-    return Decimal.sqrt(temp);
+  static f2_3(n) {
+    return Decimal.sqrt(36 * BBP.polyLogarithm(2, 0.5, n) - 36 * BBP.polyLogarithm(2, 0.25, n) - 12 * BBP.polyLogarithm(2, 0.125, n) + 6 * BBP.polyLogarithm(2, 0.015625, n));
   }
   /**
    * Listed as function (2.13)
    * @param {Number} n Number of iterations
    * @returns {Decimal}
    */
-  static f2_13(n){
-    function f(x){
+  static f2_13(n) {
+    function f(x) {
       var temp = new Decimal(0);
-      for(let i=1;i<n;i++){
-        temp = temp.add(((((-1)^i)*(x^i))/(2*i+1)));
+      for (let i = 1; i <= n; i++) {
+        temp = temp.add(((((-1) ** i) * (x ** i)) / (2 * i + 1)));
       }
       return temp;
     }
-    return f(1/2).mul(4).add(f(1/8)).div(Decimal.sqrt(2));
+    return f(1 / 2).mul(4).add(f(1 / 8)).div(Decimal.sqrt(2));
   }
-  functionList = {
-    f1_2: BBP.f1_2,
-    f2_13: BBP.f2_13,
-    f2_3: BBP.f2_3,
-    fupg905_4: BBP.fupg905_4,
-    fupg906_1: BBP.fupg906_1
-  }
+  static functionList = [
+    BBP.f1_2,
+    BBP.fupg905_4,
+    BBP.f2_3,
+    BBP.f2_13
+  ]
 }
 module.exports = {
   BBP: BBP
