@@ -1,0 +1,23 @@
+{
+    "name": "2021-22-science-fair",
+    "version": "1.0.0",
+    "description": "My Science fair project for the 2021-2022 school year",
+    "main": "dataGet.js",
+    "dependencies": {
+        "mathjs": "^9.5.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Rek9876boss/2021-22-Science-Fair.git"
+    },
+    "author": "William Henry Teter <whteter@yahoo.com>",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/Rek9876boss/2021-22-Science-Fair/issues"
+    },
+    "homepage": "https://github.com/Rek9876boss/2021-22-Science-Fair#readme"
+}
