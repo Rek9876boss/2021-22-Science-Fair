@@ -1,29 +1,32 @@
 const fs = require('fs');
-const comparison = require('./comparison').Comparator;
-const ChuFormulas = require('./Chu Paper/Chu_Formulas').Chu;
-const BbpFormulas = require('./BBP Paper/BBP_Formulas').BBP;
-
-
-
+const Chu = require('./Chu Paper/Chu_Formulas').Chu;
+const BBP = require('./BBP Paper/BBP_Formulas').BBP;
+const Comparator = require('./comparison').Comparator;
+/**
+ * The class used to initialize the data
+ */
 class Data {
-    constructor(n) {
-        this.iterations = n;
+    /**
+     * @constructor
+     * @param {number} n number of iterations
+     */
+    static init = (function (n) {
         Comparator.makeListBBP(n);
-        fs.readFile("./BBPData.json", "utf-8", (err, data) => {
-            if (err) {
-                throw err;
-            }
-            var BBPData = JSON.parse(data.toString());
-            this.BBP = BBPData;
-        });
         Comparator.makeListChu(n);
-        fs.readFile("./ChuData.json", "utf-8", (err, data) => {
-            if (err) {
-                throw err;
-            }
-            var ChuData = JSON.parse(data.toString());
-            this.Chu = ChuData;
-        });
+        Data.prototype.iterations = n;
+        Data.prototype.BBP = JSON.parse(fs.readFileSync("./BBPData.json", "utf-8"));
+        Data.prototype.Chu = JSON.parse(fs.readFileSync("./ChuData.json", "utf-8"));
+        return Object.create(Data.prototype);
+    });
+    make() {
+        var lists = {
+            "Number of iterations": this.iterations,
+            "BBP Data": this.BBP,
+            "Chu Data": this.Chu
+        }
+        const data = JSON.stringify(lists, null, 4);
+        fs.writeFileSync("./data.json", data);
     }
 }
-
+var dataContainer = Data.init(5);
+dataContainer.make();

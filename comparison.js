@@ -35,41 +35,31 @@ class Comparator {
      */
     static makeListBBP(n) {
         var bbpfl = BBP.functionList;
-        var BBPList = [];
+        const BBPList = {};
         var output = [];
         for (const func of bbpfl) {
             output = [];
             for (let j = 1; j <= n; j++) {
                 output.push(Comparator.measure(func(j), j));
             }
-            BBPList.push([func.name, output]);
+            BBPList[func.name] = output;
         }
-        const data = JSON.stringify(BBPList, null, 4);
-        fs.writeFile("./BBPData.json", data, (err) => {
-            if (err) {
-                throw err;
-            }
-            console.log("Data Saved");
-        });
+        const data = JSON.stringify(BBPList);
+        fs.writeFileSync("./BBPData.json", data);
     }
     static makeListChu(n) {
         var chufl = Chu.functionList;
-        var ChuList = [];
+        var ChuList = {};
         var output = [];
         for (const func of chufl) {
             output = [];
             for (let j = 1; j <= n; j++) {
                 output.push(Comparator.measure(func(j), j));
             }
-            ChuList.push([func.name, output]);
+            ChuList[func.name] = output;
         }
-        const data = JSON.stringify(ChuList, null, 4);
-        fs.writeFile("./ChuData.json", data, (err) => {
-            if (err) {
-                throw err;
-            }
-            console.log("Data Saved");
-        });
+        const data = JSON.stringify(ChuList);
+        fs.writeFileSync("./ChuData.json", data);
     }
 }
 module.exports = {
