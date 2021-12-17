@@ -51,12 +51,16 @@ class Comparator {
         var chufl = Chu.functionList;
         var ChuList = {};
         var output = [];
+        var completed = [];
         for (const func of chufl) {
             output = [];
             for (let j = 1; j <= n; j++) {
                 output.push(Comparator.measure(func(j), j));
+                console.clear();
+                console.log("Completed functions: " + completed.toString() + "\nCurrent function: " + func.name + " Number of iterations done: " + j);
             }
             ChuList[func.name] = output;
+            completed.push(func.name);
         }
         const data = JSON.stringify(ChuList);
         fs.writeFileSync("./ChuData.json", data);
