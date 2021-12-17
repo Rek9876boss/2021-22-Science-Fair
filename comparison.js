@@ -41,11 +41,14 @@ class Comparator {
             output = [];
             for (let j = 1; j <= n; j++) {
                 output.push(Comparator.measure(func(j), j));
+                console.clear();
+                console.log(`Completed functions: ${completed.toString()}\nCurrent function: ${func.name} Number of iterations done: ${j}`);
             }
             BBPList[func.name] = output;
         }
         const data = JSON.stringify(BBPList);
         fs.writeFileSync("./BBPData.json", data);
+        console.log("BBP Data Complete");
     }
     static makeListChu(n) {
         var chufl = Chu.functionList;
@@ -57,13 +60,14 @@ class Comparator {
             for (let j = 1; j <= n; j++) {
                 output.push(Comparator.measure(func(j), j));
                 console.clear();
-                console.log("Completed functions: " + completed.toString() + "\nCurrent function: " + func.name + " Number of iterations done: " + j);
+                console.log(`BBP Data Complete. Completed functions: ${completed.toString()}\nCurrent function: ${func.name} Number of iterations done: ${j}`);
             }
             ChuList[func.name] = output;
             completed.push(func.name);
         }
         const data = JSON.stringify(ChuList);
         fs.writeFileSync("./ChuData.json", data);
+        console.log("Chu Data Complete");
     }
 }
 module.exports = {
