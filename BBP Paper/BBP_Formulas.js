@@ -28,7 +28,7 @@ class BBP {
     static f1_2(n) {
         var temp = new Decimal(0);
         for (let i = 0; i < n; i++) {
-            temp = temp.add((1 / (16 ** i)) * ((4 / ((8 * i) + 1)) - (2 / ((8 * i) + 4)) - (1 / ((8 * i) + 5)) - (1 / ((8 * i) + 6))));
+            temp = temp.add(Decimal.div(1, (16 ** i)).mul(Decimal.div(4, ((8 * i) + 1)).sub(Decimal.div(2, ((8 * i) + 4))).sub(Decimal.div(1, ((8 * i) + 5))).sub(Decimal.div(1, ((8 * i) + 6)))));
         }
         return temp;
     }
@@ -40,7 +40,7 @@ class BBP {
     static fupg905_4(n) {
         var temp = new Decimal(0);
         for (let i = 0; i < n; i++) {
-            temp = temp.add(((mathjs.pow(-1, i)) / (4 ** i)) * (((2 / (4 * i + 1)) + (2 / (4 * i + 2))) + (1 / (4 * i + 3))));
+            temp = temp.add(((mathjs.pow(-1, i)).div(4 ** i)) * (((2 / (4 * i + 1)) + (2 / (4 * i + 2))) + (1 / (4 * i + 3))));
         }
         return temp;
     }
