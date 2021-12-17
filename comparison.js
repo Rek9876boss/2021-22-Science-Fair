@@ -37,6 +37,7 @@ class Comparator {
         var bbpfl = BBP.functionList;
         const BBPList = {};
         var output = [];
+        var completed = [];
         for (const func of bbpfl) {
             output = [];
             for (let j = 1; j <= n; j++) {
@@ -45,6 +46,7 @@ class Comparator {
                 console.log(`Completed functions: ${completed.toString()}\nCurrent function: ${func.name} Number of iterations done: ${j}`);
             }
             BBPList[func.name] = output;
+            completed.push(func.name);
         }
         const data = JSON.stringify(BBPList);
         fs.writeFileSync("./BBPData.json", data);
