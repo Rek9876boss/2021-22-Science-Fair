@@ -1,7 +1,11 @@
 const fs = require('fs');
+const mathjs = require("mathjs");
 const Chu = require('./Chu Paper/Chu_Formulas').Chu;
 const BBP = require('./BBP Paper/BBP_Formulas').BBP;
+const Decimal = require("decimal.js").Decimal;
 const Comparator = require('./comparison').Comparator;
+Decimal.set({ precision: 1025, rounding: 1 });
+
 /**
  * The class used to initialize the data
  */
@@ -28,5 +32,5 @@ class Data {
         fs.writeFileSync("./data.json", data);
     }
 }
-var dataContainer = Data.init(1000000);
+var dataContainer = Data.init(100);
 dataContainer.make();
