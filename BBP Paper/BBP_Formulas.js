@@ -16,7 +16,7 @@ class BBP {
     static polyLogarithm(m, z, n) {
         let temp = new Decimal(0);
         for (let i = 1; i <= n; i++) {
-            temp = temp.add(z ** i / i ** m);
+            temp = temp.add(Decimal.div(Decimal.pow(z, i), Decimal.pow(i, m)));
         }
         return temp;
     }
@@ -28,19 +28,7 @@ class BBP {
     static f1_2(n) {
         var temp = new Decimal(0);
         for (let i = 0; i < n; i++) {
-            temp = temp.add(Decimal.div(1, (16 ** i)).mul(Decimal.div(4, ((8 * i) + 1)).sub(Decimal.div(2, ((8 * i) + 4))).sub(Decimal.div(1, ((8 * i) + 5))).sub(Decimal.div(1, ((8 * i) + 6)))));
-        }
-        return temp;
-    }
-    /**
-     * Unlisted, fourth unlisted function from top on page 905
-     * @param {Number} n Number of iterations
-     * @returns {Decimal}
-     */
-    static fupg905_4(n) {
-        var temp = new Decimal(0);
-        for (let i = 0; i < n; i++) {
-            temp = temp.add(((mathjs.pow(-1, i)).div(4 ** i)) * (((2 / (4 * i + 1)) + (2 / (4 * i + 2))) + (1 / (4 * i + 3))));
+            temp = temp.add(Decimal.pow(16, -1 * i).mul(Decimal.div(4, Decimal.mul(8, i).add(1)).sub(Decimal.div(2, ((8 * i) + 4))).sub(Decimal.div(1, ((8 * i) + 5))).sub(Decimal.div(1, ((8 * i) + 6)))));
         }
         return temp;
     }
@@ -59,7 +47,6 @@ class BBP {
     }
     static functionList = [
         BBP.f1_2,
-        BBP.fupg905_4,
         BBP.f2_3,
     ]
 }
