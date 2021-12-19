@@ -7,16 +7,6 @@ Decimal.set({ precision: 1025, rounding: 1 });
  * @fuY {y: any} is unlisted. see description for more information.
  */
 class Chu {
-    /*
-    static sFactorial(x, n) {
-        if (n == 0) {
-            return 1;
-        } else {
-            return mathjs.gamma(x + n) / mathjs.gamma(x);
-        }
-    }*/
-
-
     static sFactorial(x, n) {
         if (n == 0) {
             return new Decimal(1);
