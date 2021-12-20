@@ -32,5 +32,5 @@ class Data {
         fs.writeFileSync("./data.json", data);
     }
 }
-var dataContainer = Data.init(10000);
+var dataContainer = Data.init(1000);
 dataContainer.make();

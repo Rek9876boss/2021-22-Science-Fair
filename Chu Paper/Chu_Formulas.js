@@ -18,7 +18,6 @@ class Chu {
             return temp;
         }
     }
-
     /**
      * 
      * @param {Array<number>} a The list of values on top
@@ -69,45 +68,13 @@ class Chu {
         }
         return Decimal.div(Decimal.mul(Decimal.sqrt(Decimal.sub(5, Decimal.sqrt(5))), 25), Decimal.mul(Decimal.mul(Decimal.sqrt(2), 2), temp));
     }
-    static fA6(n) {
-        var temp = new Decimal(0);
-        for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([2 / 5, 2 / 5, 3 / 5, 3 / 5], [1, 1, 1, 3 / 2], k), Decimal.div((6 + 50 * k + 75 * k ** 2), (4 ** k))));
-        }
-        return Decimal.div(Decimal.mul(Decimal.sqrt(Decimal.add(Decimal.sqrt(5), 5)), 25), Decimal.mul(Decimal.mul(Decimal.sqrt(2), 2), temp));
-    }
-    static fA7(n) {
-        var temp = new Decimal(0);
-        for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 8, 1 / 8, 7 / 8, 7 / 8], [1, 1, 1, 3 / 2], k), Decimal.div((7 + 128 * k + 192 * k ** 2), (4 ** k))));
-        }
-        return Decimal.div(Decimal.mul(32, Decimal.sqrt(Decimal.sub(2, Decimal.sqrt(2)))), temp);
-    }
-    static fA8(n) {
-        var temp = new Decimal(0);
-        for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([3 / 8, 3 / 8, 5 / 8, 5 / 8], [1, 1, 1, 3 / 2], k), Decimal.div((15 + 128 * k + 192 * k ** 2), (4 ** k))));
-        }
-        return Decimal.div(Decimal.mul(32, Decimal.sqrt(Decimal.add(2, Decimal.sqrt(2)))), temp);
-    }
-    static fA9(n) {
-        var temp = new Decimal(0);
-        for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 3, 1 / 3, 2 / 3, 2 / 3], [1, 3 / 2, 5 / 4, 5 / 3], k), Decimal.div((7 + 27 * k + 27 * k ** 2), (4 ** k))));
-        }
-        return Decimal.div(Decimal.mul(temp, Decimal.sqrt(3)), 4);
-    }
     static functionList = [
         Chu.fA1,
         Chu.fA2,
         Chu.fA3,
         Chu.fA4,
         Chu.fA5,
-        Chu.fA6,
-        Chu.fA7,
-        Chu.fA8,
-        Chu.fA9,
-    ]
+    ];
 }
 module.exports = {
     Chu: Chu
