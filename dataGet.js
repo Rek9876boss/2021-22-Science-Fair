@@ -36,3 +36,6 @@ class Data {
         dataContainer.make();
     }
 }
+module.exports = {
+    Data: Data
+}
