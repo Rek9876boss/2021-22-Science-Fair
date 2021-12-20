@@ -31,6 +31,8 @@ class Data {
         const data = JSON.stringify(lists, null, 4);
         fs.writeFileSync("./data.json", data);
     }
+    static run() {
+        var dataContainer = Data.init(500);
+        dataContainer.make();
+    }
 }
-var dataContainer = Data.init(500);
-dataContainer.make();

@@ -36,35 +36,35 @@ class Chu {
     static fA1(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([0.5, 0.5, 0.5], [1, 1, 1], k), Decimal.div((6 * k + 1), (4 ** k))));
+            temp = temp.add(Decimal.mul(Chu.hgeo([0.5, 0.5, 0.5], [1, 1, 1], k), Decimal.div((6 * k + 1), Decimal.pow(4, k))));
         }
         return Decimal.div(4, temp);
     }
     static fA2(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 3, 1 / 3, 2 / 3, 2 / 3], [1, 1, 1, 3 / 2], k), Decimal.div((2 + 18 * k + 27 * k ** 2), (4 ** k))));
+            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 3, 1 / 3, 2 / 3, 2 / 3], [1, 1, 1, 3 / 2], k), Decimal.div((2 + 18 * k + 27 * k ** 2), Decimal.pow(4, k))));
         }
         return Decimal.div(Decimal.sqrt(3).mul(9), temp.mul(2));
     }
     static fA3(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 4, 1 / 4, 3 / 4, 3 / 4], [1, 1, 1, 3 / 2], k), Decimal.div((3 + 32 * k + 48 * k ** 2), (4 ** k))));
+            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 4, 1 / 4, 3 / 4, 3 / 4], [1, 1, 1, 3 / 2], k), Decimal.div((3 + 32 * k + 48 * k ** 2), Decimal.pow(4, k))));
         }
         return Decimal.div(Decimal.sqrt(2).mul(8), temp);
     }
     static fA4(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 6, 1 / 6, 5 / 6, 5 / 6], [1, 1, 1, 3 / 2], k), Decimal.div((5 + 72 * k + 108 * k ** 2), (4 ** k))));
+            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 6, 1 / 6, 5 / 6, 5 / 6], [1, 1, 1, 3 / 2], k), Decimal.div((5 + 72 * k + 108 * k ** 2), Decimal.pow(4, k))));
         }
         return Decimal.div(18, temp);
     }
     static fA5(n) {
         var temp = new Decimal(0);
         for (let k = 0; k < n; k++) {
-            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 5, 1 / 5, 4 / 5, 4 / 5], [1, 1, 1, 3 / 2], k), Decimal.div((4 + 50 * k + 75 * k ** 2), (4 ** k))));
+            temp = temp.add(Decimal.mul(Chu.hgeo([1 / 5, 1 / 5, 4 / 5, 4 / 5], [1, 1, 1, 3 / 2], k), Decimal.div((4 + 50 * k + 75 * k ** 2), Decimal.pow(4, k))));
         }
         return Decimal.div(Decimal.mul(Decimal.sqrt(Decimal.sub(5, Decimal.sqrt(5))), 25), Decimal.mul(Decimal.mul(Decimal.sqrt(2), 2), temp));
     }
