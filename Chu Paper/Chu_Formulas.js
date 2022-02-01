@@ -45,7 +45,7 @@ class Chu {
         for (let k = 0; k < n; k++) {
             temp = temp.add(Decimal.mul(Chu.hgeo([1 / 3, 1 / 3, 2 / 3, 2 / 3], [1, 1, 1, 3 / 2], k), Decimal.div((2 + 18 * k + 27 * k ** 2), Decimal.pow(4, k))));
         }
-        return Decimal.div(Decimal.sqrt(3).mul(9), temp.mul(2));
+        return Decimal.div(Decimal.div(Decimal.sqrt(3).mul(9), temp), 2);
     }
     static fA3(n) {
         var temp = new Decimal(0);
